@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loans-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: loans-deployment
+  template:
+    metadata:
+      labels:
+        app: loans-deployment
+    spec:
+      containers:
+      - name: loans-deployment
+        image: microservices/loans:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 9000
